@@ -1,45 +1,58 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import AsyncSelect from "../components/Select";
+import axios from "axios";
+
+const loader = query => axios.get(`http://localhost:8080/stations?q=${query}`);
+
+const serializer = data => {
+  const result = data.map(item => ({
+    label: item.n,
+    value: item.c
+  }));
+  return [...result];
+};
+
+const onChange = value => {
+  console.log(value);
+};
 
 const Search = () => (
-  <div className="col-12 mt-2">
+  <div className="col-12 mt-4">
     <div className="row">
-      <div className="col-3">
-        <TextField
-          id="outlined-name"
-          label="Откуда"
-          //className={classes.textField}
-          value={""}
-          //onChange={e => console.log(e.target.value)}
-          margin="normal"
-          variant="outlined"
+      <div className="col-4">
+        <AsyncSelect
+          onChange={onChange}
+          placeholder={"Откуда"}
+          loader={loader}
+          serializer={serializer}
         />
       </div>
-      <div className="col-3">
-        <TextField
-          id="outlined-name"
-          label="Куда"
-          //className={classes.textField}
-          value={""}
-          //onChange={e => console.log(e.target.value)}
-          margin="normal"
-          variant="outlined"
+      <div className="col-4">
+        <AsyncSelect
+          onChange={onChange}
+          placeholder={"Куда"}
+          loader={loader}
+          serializer={serializer}
         />
       </div>
-      <div className="col-3 mt-3">
+      <div className="col-4 mt-1">
         <TextField
           id="date"
-          label="Дата"
+          label="Когда"
+          fullWidth={true}
           type="date"
-          variant="outlined"
+          onChange={onChange}
           defaultValue="2017-05-24"
           InputLabelProps={{
             shrink: true
           }}
         />
       </div>
-      <div className="col-3 mt-4">
+    </div>
+    <div className="row">
+      <div className="col-8 offset-2">
         <Button variant="outlined" color="primary" fullWidth={true}>
           Поиск
         </Button>

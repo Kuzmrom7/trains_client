@@ -9,9 +9,9 @@ import Search from "./Search";
 
 const Home = () => (
   <BackgroundImage img={"./img/1.jpeg"}>
-    {/*<Header />*/}
+  {/*  <Header />*/}
     <ViewContainer>
-      <Paper elevation={1} className="p-3">
+      <Paper elevation={3} className="p-5">
         <Typography variant="h4" component="h5" className="text-center">
           Поиск билетов на поезд
         </Typography>
