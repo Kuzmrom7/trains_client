@@ -3,15 +3,6 @@ import { compose, lifecycle, withHandlers, withState } from "recompose";
 import SearchActions from "../actions";
 import Search from "../components/Search";
 import moment from "moment";
-/*
-const mapStateToProps = ({
-  services: {
-    search: {
-      list: { visibleSortList, sortType }
-    }
-  }
-}) => ({ visibleSortList, sortType });
-*/
 
 export default compose(
   connect(
@@ -37,7 +28,9 @@ export default compose(
       }
     },
     onSubmit: ({ getTrains, from, to, date }) => () => {
-      getTrains(from, to, date);
+      if (from !== "" && to !== "" && date !== "") {
+        getTrains(from, to, date);
+      }
     }
   }),
 

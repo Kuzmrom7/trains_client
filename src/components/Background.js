@@ -19,7 +19,7 @@ const BackgroundColor = ({ children }) => (
       height: "100vh",
       overflow: "hidden",
       backgroundSize: "cover",
-      backgroundColor: "#E1E5E5"
+      backgroundColor: "#B8B8B8"
     }}
   >
     {children}

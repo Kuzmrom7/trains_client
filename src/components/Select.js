@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import MenuItem from "@material-ui/core/MenuItem";
 import { Async } from "react-select";
+import debounce from "lodash/debounce";
 
 const styles = theme => ({
   root: {
@@ -160,6 +161,13 @@ class Select extends React.Component {
     const handleInputChange = newValue => {
       this.setState({ newValue });
     };
+
+    const debouncedFetch = debounce((value, callback) => {
+      this.props.loader(value).then(response => {
+        callback(this.props.serializer(response.data));
+      });
+    }, 500);
+
     return (
       <div className={classes.root}>
         <Async
@@ -170,11 +178,7 @@ class Select extends React.Component {
               shrink: true
             }
           }}
-          loadOptions={(value, callback) => {
-            this.props.loader(value).then(response => {
-              callback(this.props.serializer(response.data));
-            });
-          }}
+          loadOptions={debouncedFetch}
           components={components}
           onChange={this.props.onChange}
           onInputChange={handleInputChange}

@@ -4,13 +4,11 @@ import Typography from "@material-ui/core/Typography";
 import { BackgroundImage } from "../../components/Background";
 import ViewContainer from "../../components/ViewContainer";
 
-
 import Search from "../Search/index";
-/*import Header from "../../components/Header";*/
+import ResultList from "../ResultList";
 
 const Index = () => (
   <BackgroundImage img={"./img/1.jpeg"}>
-   {/* <Header />*/}
     <ViewContainer>
       <Paper elevation={3} className="p-5">
         <Typography variant="h4" component="h5" className="text-center">
@@ -21,6 +19,7 @@ const Index = () => (
         </Typography>
         <Search />
       </Paper>
+      <ResultList />
     </ViewContainer>
   </BackgroundImage>
 );
