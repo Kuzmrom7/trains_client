@@ -13,4 +13,17 @@ const BackgroundImage = ({ img, children }) => (
   </div>
 );
 
-export default BackgroundImage;
+const BackgroundColor = ({ children }) => (
+  <div
+    style={{
+      height: "100vh",
+      overflow: "hidden",
+      backgroundSize: "cover",
+      backgroundColor: "#E1E5E5"
+    }}
+  >
+    {children}
+  </div>
+);
+
+export { BackgroundImage, BackgroundColor };

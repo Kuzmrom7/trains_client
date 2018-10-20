@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Home from "./containers/Home";
+import Index from "./containers/Home/index";
 import "./App.css";
 
 const App = () => (
   <Switch>
-    <Route exact path="/" component={Home} />
+    <Route exact path="/" component={Index} />
   </Switch>
 );
 export default App;
