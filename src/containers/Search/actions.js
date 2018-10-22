@@ -19,7 +19,7 @@ const SearchActions = {
     dispatch(SearchActions.setIsLoaded(false));
     dispatch(SearchActions.setPending(true));
     axios
-      .get(`http://localhost:8080/trains/dev?from=${from}&to=${to}&date=${date}`)
+      .get(`http://localhost:8080/trains?from=${from}&to=${to}&date=${date}`)
       .then(response => {
         dispatch(SearchActions.setTrains(response.data));
       })

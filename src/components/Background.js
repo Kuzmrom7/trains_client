@@ -5,7 +5,7 @@ const BackgroundImage = ({ img, children }) => (
     style={{
       backgroundImage: `url(${img})`,
       height: "100vh",
-      overflow: "hidden",
+      overflow: "auto",
       backgroundSize: "cover"
     }}
   >
