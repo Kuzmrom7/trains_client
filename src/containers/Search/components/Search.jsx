@@ -4,7 +4,8 @@ import Button from "@material-ui/core/Button";
 import AsyncSelect from "../../../components/Select";
 import axios from "axios";
 
-const loader = query => axios.get(`http://localhost:8080/stations?q=${query}`);
+const loader = query =>
+  axios.get(`https://kuzmrom7-trains.herokuapp.com/stations?q=${query}`);
 
 const serializer = data => {
   const result = data.map(item => ({
