@@ -7,15 +7,7 @@ import axios from "axios";
 const loader = query =>
   axios.get(`https://kuzmrom7-trains.herokuapp.com/stations?q=${query}`);
 
-const serializer = data => {
-  const result = data.map(item => ({
-    label: item.n,
-    value: item.c
-  }));
-  return [...result];
-};
-
-const Search = ({ onChange, onSubmit }) => (
+const Search = ({ onChange, onSubmit, serializer }) => (
   <div className="col-12 mt-4">
     <div className="row">
       <div className="col-4">

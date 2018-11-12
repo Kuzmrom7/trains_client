@@ -3,6 +3,7 @@ import { compose, lifecycle, withHandlers, withState } from "recompose";
 import SearchActions from "../actions";
 import Search from "../components/Search";
 import moment from "moment";
+import axios from "axios";
 
 export default compose(
   connect(
@@ -14,6 +15,13 @@ export default compose(
   withState("date", "setDate", ""),
 
   withHandlers({
+    serializer: () => data => {
+      const result = data.map(item => ({
+        label: item.n,
+        value: item.c
+      }));
+      return [...result];
+    },
     onChange: ({ setFrom, setTo, setDate }) => (value, type) => {
       if (type === "from") {
         setFrom(value.value);
