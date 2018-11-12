@@ -14,6 +14,13 @@ export default compose(
   withState("date", "setDate", ""),
 
   withHandlers({
+    serializer: () => data => {
+      const result = data.map(item => ({
+        label: item.n,
+        value: item.c
+      }));
+      return [...result];
+    },
     onChange: ({ setFrom, setTo, setDate }) => (value, type) => {
       if (type === "from") {
         setFrom(value.value);
