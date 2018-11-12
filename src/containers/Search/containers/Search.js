@@ -3,7 +3,6 @@ import { compose, lifecycle, withHandlers, withState } from "recompose";
 import SearchActions from "../actions";
 import Search from "../components/Search";
 import moment from "moment";
-import axios from "axios";
 
 export default compose(
   connect(

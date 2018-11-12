@@ -3,12 +3,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button/Button";
 
 const Item = ({ station0, station1, number, time0, time1, timeInWay }) => (
@@ -22,7 +16,9 @@ const Item = ({ station0, station1, number, time0, time1, timeInWay }) => (
           <div className="col-12">
             <div className="row">
               <div className="col-7">
-                &#x1F685; №{number} {time0} ----------> {time1}{" "}
+                <span role="img" aria-label={""} aria-hidden={"true"}>
+                  &#x1F685; №{number} {time0} ----------> {time1}{" "}
+                </span>
               </div>
               <div className="col-2">
                 <span className="text-right">
@@ -79,52 +75,6 @@ const ResultList = ({
           </div>
         </div>
       </div>
-    );
-  } else {
-    return null;
-  }
-};
-
-const TableList = ({
-  search: {
-    isLoaded,
-    pending,
-    trains: { tp }
-  }
-}) => {
-  if (pending) {
-    return <LinearProgress variant="query" />;
-  } else if (isLoaded) {
-    return (
-      <Paper>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Поезд</TableCell>
-              <TableCell numeric>Отправление</TableCell>
-              <TableCell numeric>Прибытие</TableCell>
-              <TableCell numeric>Время в пути</TableCell>
-              <TableCell numeric>Количество билетов</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {tp[0].list.map((item, index) => {
-              return (
-                <TableRow key={index}>
-                  {console.log(item)}
-                  <TableCell component="th" scope="row">
-                    {item.number}
-                  </TableCell>
-                  <TableCell numeric>{item.time0}</TableCell>
-                  <TableCell numeric>{item.time1}</TableCell>
-                  <TableCell numeric>{item.timeInWay}</TableCell>
-                  <TableCell numeric>12</TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </Paper>
     );
   } else {
     return null;
